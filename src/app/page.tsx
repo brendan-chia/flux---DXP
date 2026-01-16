@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+// Update the import to include 'type Variants'
+import { motion, type Variants } from 'framer-motion';
 import { 
   ArrowRight, 
   Calendar, 
@@ -19,7 +20,8 @@ import { DigitalSongket, DigitalSongketGold } from '@/components/ui/digital-song
 import { COURSES, STATS, REVIEWS } from '@/lib/mockData';
 import { formatPrice, formatDate } from '@/lib/utils';
 
-const containerVariants = {
+// Add ': Variants' type annotation
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -29,14 +31,16 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+// Add ': Variants' type annotation
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.5,
-      ease: [0.25, 0.46, 0.45, 0.94],
+      // Add 'as const' here to fix the "number[] is not assignable" error
+      ease: [0.25, 0.46, 0.45, 0.94] as const,
     },
   },
 };
